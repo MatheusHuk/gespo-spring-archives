@@ -5,6 +5,9 @@ import com.gespo.gespospringarchives.structures.Queue;
 import com.gespo.gespospringarchives.structures.exceptions.QueueException;
 import org.jetbrains.annotations.NotNull;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
 import java.util.List;
 
 import static com.gespo.gespospringarchives.patterns.DataPattern.convertHoursToDate;
@@ -40,7 +43,7 @@ public class ScheduleFile {
         // header += first.getProject().getManager(); //Indica o nome do Gerente do projeto
         header += convertToDataPatern(first.getCreationDate(), "dd-MM-yyyy"); // Data da geração do arquivo no formato: “dd-MM-yyyy”
         header += "1.00"; // Número da versão do layout para controle Ex: 1.10
-        header += "<br>";
+        header += "\n";
 
         while(!queue.isEmpty()) {
 
@@ -57,7 +60,7 @@ public class ScheduleFile {
                     ); // Total de horas apontadas no formato: “HH:mm:ss”
 
             cont++;
-            body += "<br>";
+            body += "\n";
         }
 
         trailer += "02"; // Registro de trailer: “02”
@@ -67,6 +70,29 @@ public class ScheduleFile {
 
     public String getContent() {
         return header + body + trailer;
+    }
+
+    public File getFile (String extension){
+
+        File file = null;
+        PrintWriter printWriter = null;
+
+        try {
+            file = new File("Apontamentos.txt");
+            printWriter = new PrintWriter(file);
+            printWriter.write(this.getContent());
+        }
+
+        catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        finally {
+            printWriter.flush();
+            printWriter.close();
+        }
+
+        return file;
     }
 
 }

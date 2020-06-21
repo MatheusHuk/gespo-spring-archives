@@ -6,18 +6,21 @@ public class WorkSchedule {
 
     private Integer id;
     private Date creationDate;
+    private Date lastupdateDate;
     private Double amountHours;
     private String dsWork;
-    private Employee employee;
     private Project project;
+    private Employee employee;
 
-    public WorkSchedule(Integer id, Date creationDate, Double amountHours, String dsWork, Employee employee, Project project) {
+    public WorkSchedule(Integer id, Date creationDate, Date lastupdateDate, Double amountHours,
+                        String dsWork, Project project, Employee employee) {
         this.id = id;
         this.creationDate = creationDate;
+        this.lastupdateDate = lastupdateDate;
         this.amountHours = amountHours;
         this.dsWork = dsWork;
-        this.employee = employee;
         this.project = project;
+        this.employee = employee;
     }
 
     public Integer getId() {
@@ -36,6 +39,14 @@ public class WorkSchedule {
         this.creationDate = creationDate;
     }
 
+    public Date getLastupdateDate() {
+        return lastupdateDate;
+    }
+
+    public void setLastupdateDate(Date lastupdateDate) {
+        this.lastupdateDate = lastupdateDate;
+    }
+
     public Double getAmountHours() {
         return amountHours;
     }
@@ -52,6 +63,14 @@ public class WorkSchedule {
         this.dsWork = dsWork;
     }
 
+    public Project getProject() {
+        return project;
+    }
+
+    public void setProject(Project project) {
+        this.project = project;
+    }
+
     public Employee getEmployee() {
         return employee;
     }
@@ -60,11 +79,4 @@ public class WorkSchedule {
         this.employee = employee;
     }
 
-    public Project getProject() {
-        return project;
-    }
-
-    public void setProject(Project project) {
-        this.project = project;
-    }
 }
