@@ -10,7 +10,7 @@ import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.util.List;
 
-import static com.gespo.gespospringarchives.patterns.DataPattern.convertHoursToDate;
+import static com.gespo.gespospringarchives.patterns.DataPattern.convertHoursToString;
 import static com.gespo.gespospringarchives.patterns.DataPattern.convertToDataPatern;
 
 public class ScheduleFile {
@@ -39,10 +39,10 @@ public class ScheduleFile {
 
         header += "00"; // Registro Header: “00”
         header += "apontamento"; // Arquivo de apontamento: “apontamento”
-        header += first.getProject().getName(); // Indica o nome projeto do apontamento
-        // header += first.getProject().getManager(); //Indica o nome do Gerente do projeto
-        header += convertToDataPatern(first.getCreationDate(), "dd-MM-yyyy"); // Data da geração do arquivo no formato: “dd-MM-yyyy”
-        header += "1.00"; // Número da versão do layout para controle Ex: 1.10
+        header += String.format("%-25s", first.getProject().getName()); // Indica o nome projeto do apontamento
+        header += String.format("%-30s", first.getProject().getManager()); //Indica o nome do Gerente do projeto
+        header += convertToDataPatern(first.getCreationDate(), "yyyy-MM-dd"); // Data da geração do arquivo no formato: “yyyy-MM-dd”
+        header += "1.00"; // Número da versão do layout para controle Ex: 1.00
         header += "\n";
 
         while(!queue.isEmpty()) {
@@ -50,17 +50,12 @@ public class ScheduleFile {
             WorkSchedule next = queue.poll();
 
             body += "01"; // Registro Body: “01”
-            body += next.getEmployee().getName(); // Nome do funcionário
-            body += next.getDsWork(); // Alguma observação sobre o apontamento
-            body += convertToDataPatern(
-                        convertHoursToDate(
-                                next.getAmountHours()
-                        ),
-                    "HH:mm:ss"
-                    ); // Total de horas apontadas no formato: “HH:mm:ss”
+            body += String.format("%-30s", next.getEmployee().getName()); // Nome do funcionário
+            body += String.format("%-100s", next.getDsWork()); // Alguma observação sobre o apontamento
+            body += convertHoursToString(next.getAmountHours()); // Total de horas apontadas no formato: “HH:mm”
+            body += "\n";
 
             cont++;
-            body += "\n";
         }
 
         trailer += "02"; // Registro de trailer: “02”

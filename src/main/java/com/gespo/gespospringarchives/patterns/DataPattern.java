@@ -1,30 +1,26 @@
 package com.gespo.gespospringarchives.patterns;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
-import java.time.ZoneId;
-import java.util.Date;
+import java.time.LocalTime;
 
 public class DataPattern {
 
-    public static String convertToDataPatern (LocalDate date, String pattern) {
+    @NotNull
+    public static String convertToDataPatern (@NotNull LocalDate date, String pattern) {
         DateFormat dateFormat = new SimpleDateFormat(pattern);
-        return dateFormat.format(date);
+        return date.toString();
     }
 
-    public static LocalDate convertHoursToDate (Double hours) {
-        Double seconds = (hours * 3600);
-        Long unixTime = seconds.longValue() * 1000L;
-        return convertToLocalDateViaInstant(
-                new Date(unixTime)
-        );
-    }
-
-    public static LocalDate convertToLocalDateViaInstant(Date dateToConvert) {
-        return dateToConvert.toInstant()
-                .atZone(ZoneId.systemDefault())
-                .toLocalDate();
+    @NotNull
+    public static String convertHoursToString (Double hours) {
+        Double s = hours * 3600;
+        long seconds = Math.round(s);
+        LocalTime timeOfDay = LocalTime.ofSecondOfDay(seconds);
+        return timeOfDay.toString();
     }
 
 }

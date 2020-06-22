@@ -14,13 +14,12 @@ public class Employee {
     private Double hourValue;
     private String office;
     private Date dtBirth;
-    private Team team;
+    // private Team team;
     private Category category;
-    private Permission permission;
+    // private Permission permission;
 
     public Employee(Integer id, Date creationDate, Date lastUpdateDate, String cpf, String name, String password,
-                    String email, Double hourValue, String office, Date dtBirth, Team team, Category category,
-                    Permission permission) {
+                    String email, Double hourValue, String office, Date dtBirth, Category category) {
         this.id = id;
         this.creationDate = creationDate;
         this.lastUpdateDate = lastUpdateDate;
@@ -31,9 +30,9 @@ public class Employee {
         this.hourValue = hourValue;
         this.office = office;
         this.dtBirth = dtBirth;
-        this.team = team;
+        // this.team = team;
         this.category = category;
-        this.permission = permission;
+        // this.permission = permission;
     }
 
     public Integer getId() {
@@ -116,6 +115,7 @@ public class Employee {
         this.dtBirth = dtBirth;
     }
 
+    /*
     public Team getTeam() {
         return team;
     }
@@ -123,6 +123,7 @@ public class Employee {
     public void setTeam(Team team) {
         this.team = team;
     }
+     */
 
     public Category getCategory() {
         return category;
@@ -132,6 +133,7 @@ public class Employee {
         this.category = category;
     }
 
+    /*
     public Permission getPermission() {
         return permission;
     }
@@ -139,5 +141,6 @@ public class Employee {
     public void setPermission(Permission permission) {
         this.permission = permission;
     }
+     */
 
 }

@@ -7,17 +7,17 @@ public class WorkSchedule {
 
     private Integer id;
     private LocalDate creationDate;
-    private Date lastupdateDate;
+    private Date lastUpdateDate;
     private Double amountHours;
     private String dsWork;
     private Project project;
     private Employee employee;
 
-    public WorkSchedule(Integer id, LocalDate creationDate, Date lastupdateDate, Double amountHours,
+    public WorkSchedule(Integer id, LocalDate creationDate, Date lastUpdateDate, Double amountHours,
                         String dsWork, Project project, Employee employee) {
         this.id = id;
         this.creationDate = creationDate;
-        this.lastupdateDate = lastupdateDate;
+        this.lastUpdateDate = lastUpdateDate;
         this.amountHours = amountHours;
         this.dsWork = dsWork;
         this.project = project;
@@ -41,11 +41,11 @@ public class WorkSchedule {
     }
 
     public Date getLastupdateDate() {
-        return lastupdateDate;
+        return lastUpdateDate;
     }
 
     public void setLastupdateDate(Date lastupdateDate) {
-        this.lastupdateDate = lastupdateDate;
+        this.lastUpdateDate = lastupdateDate;
     }
 
     public Double getAmountHours() {
