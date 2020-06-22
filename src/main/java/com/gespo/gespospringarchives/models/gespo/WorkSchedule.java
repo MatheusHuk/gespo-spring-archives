@@ -1,18 +1,19 @@
 package com.gespo.gespospringarchives.models.gespo;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 public class WorkSchedule {
 
     private Integer id;
-    private Date creationDate;
+    private LocalDate creationDate;
     private Date lastupdateDate;
     private Double amountHours;
     private String dsWork;
     private Project project;
     private Employee employee;
 
-    public WorkSchedule(Integer id, Date creationDate, Date lastupdateDate, Double amountHours,
+    public WorkSchedule(Integer id, LocalDate creationDate, Date lastupdateDate, Double amountHours,
                         String dsWork, Project project, Employee employee) {
         this.id = id;
         this.creationDate = creationDate;
@@ -31,11 +32,11 @@ public class WorkSchedule {
         this.id = id;
     }
 
-    public Date getCreationDate() {
+    public LocalDate getCreationDate() {
         return creationDate;
     }
 
-    public void setCreationDate(Date creationDate) {
+    public void setCreationDate(LocalDate creationDate) {
         this.creationDate = creationDate;
     }
 

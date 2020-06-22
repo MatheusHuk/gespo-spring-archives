@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
-@FeignClient(name = "gespo-api-rest", url = "https://www.api-rest.gespocorp.com.br")
+@FeignClient(name = "api-rest", url = "https://api-rest.gespocorp.com.br")
 @RequestMapping("/work-schedules")
 public interface RestSchedule {
 
